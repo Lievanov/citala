@@ -1,0 +1,32 @@
+<h1>Editar Usuarios</h1>
+</br>
+<%= form_tag update_multiple_users_path, method: :put do %>
+    
+        <table class="table">
+          	<tread>
+          	    <tr>
+                    <th>Nombre</th>
+                    <th>correo</th>
+                    <th>Rol</th>
+                    <th>Carnet</th>
+                </tr>
+          	</tread>
+          	<tbody>
+          	<% @users.each do |user| %>
+          	    <%= fields_for "users[]", user do |f| %>
+                <tr>
+                    <th><%= f.text_field :name, :class => 'form-control' %></th>
+                    <th><%= f.email_field :email, :class => 'form-control' %></th>
+                    <th><%= f.select(:rol, User::ROLES) %></th>
+                    <th><%= f.text_field :carnet, :class => 'form-control' %></th>
+                </tr>
+                <% end %>
+            <% end %>
+            </tbody>
+        </table>
+    <div class="actions">
+        <%= submit_tag 'Editar Todos', :class => 'btn btn-primary' %>
+    </div>
+    
+<% end %>
+</br></br>

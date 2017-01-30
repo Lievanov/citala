@@ -1,0 +1,58 @@
+<% if flash[:success] %>
+    <div class="alert alert-success">
+        <%= flash[:success] %>
+    </div>
+<% end %>
+<% if flash[:error] %>
+    <div class="alert alert-danger">
+        <%= flash[:error] %>
+    </div>
+<% end %>
+<h1>Subir notas</h1>
+</br>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>Curso</th>
+        <th>Asignatura</th>
+        <th>Horario</th>
+        <th>Periodo 1</th>
+        <th>Periodo 2</th>
+        <th>Periodo 3</th>
+        <th>Periodo 4</th>
+        <th>Periodo de Recuperacion</th>
+        <th>Listado</th>
+        <th>Notas</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+        <th>Curso</th>
+        <th>Asignatura</th>
+        <th>Horario</th>
+        <th>Periodo 1</th>
+        <th>Periodo 2</th>
+        <th>Periodo 3</th>
+        <th>Periodo 4</th>
+        <th>Periodo de Recuperacion</th>
+        <th>Listado</th>
+        <th>Notas</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @notas.each do |notas| %> 
+        <tr>
+            <th><%= notas.cursoID %></th>
+            <th><%= Asignatura.find(notas.asignaturaID).nombre %></th>
+            <th><%= Curso.find(notas.profesorID).horario %></th>
+            <th><%= link_to "Notas Periodo 1", update_selected_grade_path(notas,1) %></th>
+            <th><%= link_to "Notas Periodo 2", update_selected_grade_path(notas,2) %></th>
+            <th><%= link_to "Notas Periodo 3", update_selected_grade_path(notas,3) %></th>
+            <th><%= link_to "Notas Periodo 4", update_selected_grade_path(notas,4) %></th>
+            <th><%= link_to "Periodo de Recuperacion", update_selected_grade_path(notas,5) %></th>
+            <th><%= link_to "Listado", update_selected_grade_path(notas,1, format: :pdf), class: "btn btn-info" %></th>
+            <th><%= link_to "Notas", update_selected_grade_notas_path(notas, format: :pdf), class: "btn btn-info" %></th>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

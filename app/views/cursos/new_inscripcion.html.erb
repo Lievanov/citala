@@ -1,0 +1,47 @@
+<% if flash[:success] %>
+    <div class="alert alert-success">
+        <%= flash[:success] %>
+    </div>
+<% end %>
+<% if flash[:error] %>
+    <div class="alert alert-danger">
+        <%= flash[:error] %>
+    </div>
+<% end %>
+
+<h1>Inscripción de alumnos</h1>
+
+<h2>Para el curso <%= Curso.find(params[:id]).cursoID %></h2>
+</br>
+<%= form_tag new_multiple_inscripcion_path, method: :get do %>
+    <table id="example" class="display" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Grado</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Grado</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @alumnos.each do |alumnos| %> 
+            <tr>
+                <th><%= check_box_tag "users_ids[]", alumnos.id  %></th>
+                <th><%= alumnos.name %></th>
+                <th><%= alumnos.email %></th>
+                <th><%= alumnos.grado %> Grado</th>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+        <%= submit_tag "Guardar Selección", :class => 'btn btn-primary'  %>
+        </br></br></br>
+<% end %>

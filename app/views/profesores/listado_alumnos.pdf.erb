@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de alumnos</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+    <body>
+        <h2>Listado de alumnos</h2>
+        <%= form_tag update_multiple_notas_path, method: :put do %>
+  <table style="width:100%">
+  	<tread>
+	  <tr>
+        <th>Alumno</th>
+        <th style="color:white">_________________________________________________</th>
+      </tr>
+  	</tread>
+    <tbody>
+    	<% @notas.each do |nota| %>
+        <%= fields_for "notas[]", nota do |f| %>
+          <tr>
+            <th><%= User.find(nota.alumnoID).name %></th>
+            <th></th>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+</br></br></br>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<div class="well">
+    <h1>Editar Horario</h1>
+    <%= form_for :hora, html: { multipart: true } do |f| %>
+    <div class="row">
+        <p><%= f.label :titulo %></p>
+        <p><%= f.text_field :titulo, :class => 'form-control' %></p>
+    </div>
+    <div class="row">
+        <p><%= f.label :url %></p>
+        <p><%= f.text_area :url, :class => 'form-control' %></p>
+</div>
+    </div>
+        <%= f.submit "Guardar", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</br></br></br>

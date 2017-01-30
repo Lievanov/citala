@@ -1,0 +1,146 @@
+<h1>Editar Alumno</h1>
+</br>
+
+<%= form_tag update_multiple_alumnos_path, method: :put do %>
+    	<% @users.each do |user| %>
+        <%= fields_for "users[]", user do |f| %>
+        <div class="well">
+          <div class="row"> 
+            <div class="col-md-12"><h3>Informacion de <%= user.name %></h3>
+            </br>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :name, 'Nombre completo'  %><br>
+            <%= f.text_field :name, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :email, 'Correo'  %><br>
+              <%= f.email_field :email, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :carnet, 'Carnet'  %><br>
+            <%= f.text_field :carnet, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :profesorID, 'Profesor encargado'  %><br>
+              <%= f.select :profesorID, options_from_collection_for_select(@Users, 'id', 'name', user.profesorID ) %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :activo, 'Activo'  %><br>
+            <%= f.check_box :activo, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :grado, 'Grado'  %><br>
+              <%= f.select(:grado, Aula::GRADOS) %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :fecha_nac, 'Fecha de Nacimiento'  %><br>
+            <%= f.date_field :fecha_nac, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :Centro_esc_ant, 'Centro Escolar Anterior'  %><br>
+              <%= f.text_field :Centro_esc_ant, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :religion, 'Religion'  %><br>
+            <%= f.text_field :religion, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :tel_casa, 'Telefono de casa'  %><br>
+              <%= f.text_field :tel_casa, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :enfermedades, 'Enfermedades que padece'  %><br>
+            <%= f.text_field :enfermedades, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :departamento, 'Departamento'  %><br>
+            <%= f.text_field :departamento, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :municipio, 'Municipio'  %><br>
+              <%= f.text_field :municipio, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :barrio, 'Barrio'  %><br>
+            <%= f.text_field :barrio, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :colonia, 'Colonia'  %><br>
+              <%= f.text_field :colonia, :class => 'form-control' %></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :nombre_padre, 'Nombre padre'  %><br>
+              <%= f.text_field :nombre_padre, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :tel_padre, 'Telefono padre'  %><br>
+            <%= f.text_field :tel_padre, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :correo_padre, 'Correo padre'  %><br>
+              <%= f.text_field :correo_padre, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :ocupacion_padre, 'Ocupacion padre'  %><br>
+            <%= f.text_field :ocupacion_padre, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :lugar_trabajo_padre, 'Lugar de trabajo padre'  %><br>
+              <%= f.text_field :lugar_trabajo_padre, :class => 'form-control' %></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :nombre_madre, 'Nombre madre'  %><br>
+            <%= f.text_field :nombre_madre, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :tel_madre, 'Telefono madre'  %><br>
+              <%= f.text_field :tel_madre, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :correo_madre, 'Correo madre'  %><br>
+            <%= f.text_field :correo_madre, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :ocupacion_madre, 'Ocupacion madre'  %><br>
+              <%= f.text_field :ocupacion_madre, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :lugar_trabajo_madre, 'Correo madre'  %><br>
+            <%= f.text_field :lugar_trabajo_madre, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :nombre_enc, 'Nombre encargado'  %><br>
+            <%= f.text_field :nombre_enc, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :correo_enc, 'Correo encargado'  %><br>
+              <%= f.text_field :correo_enc, :class => 'form-control' %></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :tel_enc, 'Telefono encargado'  %><br>
+            <%= f.text_field :tel_enc, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"> <%= f.label :en_caso_emergencia, 'En caso de emergencia avisar a'  %><br>
+            <%= f.text_field :en_caso_emergencia, :class => 'form-control' %></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <%= f.label :tel_emergencia, 'Telefono emergencia '  %><br>
+              <%= f.text_field :tel_emergencia, :class => 'form-control' %></div>
+          </div>
+          </br>
+        </div>
+        <% end %>
+      <% end %>
+    <div class="actions">
+        <%= submit_tag 'Editar Todos', :class => 'btn btn-primary' %>
+        </br></br>
+    </div>
+<% end %>

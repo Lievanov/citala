@@ -1,0 +1,18 @@
+<center>
+    
+    <img src="/uploads/logo.png" height="auto" width="auto"><br>
+    <h1>Colegio Citalá</h1>
+    <p>El Colegio Citalá forma parte de la Asociación para la Promoción Humana (APROHU) </br>
+    y  del Centro de Capacitación Humano Laboral La Fragua </br>
+    En 2016 atenderemos Séptimo, Octavo, Noveno Grado, Primero y Segundo de Bachillerato. </p>
+    
+    <h1> Noticias </h1>
+    </br>
+    <% @posts.each do |noticia| %> 
+        <div class="well">
+            <h1><%= noticia.titulo %></h1>
+            <div><%= noticia.contenido %></div>
+            <img src=" <%= noticia.foto %> " style="max-height:613px;max-width:896px;" width="auto" height="auto" >
+        </div></br>
+    <% end %>
+</center>

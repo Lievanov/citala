@@ -1,0 +1,36 @@
+<h1>Editar Aula</h1>
+</br>
+<div class="well">
+<%= form_for :aula do |f| %>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :aulaID, 'Aula'  %><br>
+    <%= f.text_field :aulaID, :class => 'form-control' %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :profesorID, 'Profesor asignado' %><br>
+    <%= f.select :profesorID, options_from_collection_for_select(@Users, 'id', 'name', @aula.profesorID) %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :grado, 'Grado'  %><br>
+    <%= f.select(:grado, Aula::GRADOS) %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :actual, 'Aula activa' %><br>
+    <%= f.check_box :actual, :class => 'form-control' %>
+  </p>
+</div>
+
+
+<p>
+    <%= f.submit 'Editar', :class => 'btn btn-primary' %>
+  </p>
+<% end %>
+</div>
+</br>

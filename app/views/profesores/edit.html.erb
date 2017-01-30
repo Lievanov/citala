@@ -1,0 +1,35 @@
+<h1>Editar Profesor</h1>
+</br>
+<div class="well">   
+  <%= form_for :user do |f| %>
+  <div class="row">
+    <p class="col-md-4">
+      <%= f.label :name, 'Nombre completo'  %><br>
+      <%= f.text_field :name, :class => 'form-control' %>
+    </p>
+  </div>
+  <div class="row">
+    <p class="col-md-4">
+      <%= f.label :email, 'Correo electronico' %><br>
+      <%= f.text_field :email, :class => 'form-control' %>
+    </p>
+  </div>
+  <div class="row">
+    <p class="col-md-4">
+      <%= f.label :carnet, 'Carnet' %><br>
+      <%= f.text_field :carnet, :class => 'form-control' %>
+    </p>
+  </div>
+  <div class="row">
+    <p class="col-md-4">
+      <%= f.label :activo, 'Activo' %><br>
+      <%= f.check_box :activo, :class => 'form-control' %>
+    </p>
+  </div>
+    
+</div>
+<p>
+  <%= f.submit 'Editar', :class => 'btn btn-primary' %>
+</p>
+<% end %>
+</br></br></br>

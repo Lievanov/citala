@@ -1,0 +1,60 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<div class="well vs-component">
+  <h1>Nueva asignatura</h1>
+  </br>
+  <%= form_for :asignatura do |f| %>
+  <div class="row">
+    <p class="col-md-4">
+      <%= f.label :asignaturaID, 'Código de Asignatura'  %><br>
+      <%= f.text_field :asignaturaID, :class => 'form-control' %>
+    </p>
+  </div>
+  <div class="row">
+    <p class="col-md-4">
+      <%= f.label :nombre, 'Nombre de Asignatura' %><br>
+      <%= f.text_field :nombre, :class => 'form-control' %>
+    </p>
+  </div>
+    <p>
+      <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+    </p>
+  <% end %>
+</div>
+<h1>Listado de asignaturas</h1>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Código de materia</th>
+      <th>Nombre de materia</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Código de materia</th>
+      <th>Nombre de materia</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @asignaturas.each do |asignatura| %> 
+      <tr>
+        <th><%= asignatura.asignaturaID %></th>
+        <th><%= asignatura.nombre %></th>
+        <th><%= link_to "Editar", edit_asignatura_path(asignatura), class: "btn btn-success" %></th>
+        <th><%= button_to "Eliminar", destroy_asignatura_path(asignatura), method: :delete, class: "btn btn-danger", confirm: 'Esta seguro de eliminar la asignatura?'  %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

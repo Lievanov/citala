@@ -1,0 +1,44 @@
+<h1>Editar Curso</h1>
+</br>
+<div class="well">
+<%= form_for :curso do |f| %>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :cursoID, 'Curso ID'  %><br>
+    <%= f.text_field :cursoID, :class => 'form-control' %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :aulaID, 'Aula' %><br>
+    <% optAula = options_from_collection_for_select(@Aulas, 'id', 'aulaID') %>
+    <%= f.select :aulaID,  optAula %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :asignaturaID, 'Asignatura' %><br>
+    <% optAsignatura = options_from_collection_for_select(@Asignaturas, 'id', 'nombre') %>
+    <%= f.select :asignaturaID,  optAsignatura %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :profesorID, 'Profesor asignado' %><br>
+    <% optUser = options_from_collection_for_select(@Users, 'id', 'name') %>
+    <%= f.select :profesorID,  optUser %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :activo, 'Aula activa' %><br>
+    <%= f.check_box :activo, :class => 'form-control' %>
+  </p>
+</div>
+
+  <p>
+    <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+  </p>
+<% end %>
+</div>
+</br></br>

@@ -1,0 +1,20 @@
+<h1>Inscripcion de alumnos</h1>
+</br>
+<table class="table">
+  	<tread>
+  	    <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Grado</th>
+        </tr>
+  	</tread>
+    <tbody>
+  	    <% @Alumnos.each do |user| %> 
+    	    <tr>
+                <th><%= user.name %></th>
+                <th><%= user.email %></th>
+                <th><%= user.grado %></th>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

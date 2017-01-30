@@ -1,0 +1,60 @@
+<% if flash[:success] %>
+    <div class="alert alert-success">
+        <%= flash[:success] %>
+    </div>
+<% end %>
+<% if flash[:error] %>
+    <div class="alert alert-danger">
+        <%= flash[:error] %>
+    </div>
+<% end %>
+
+    <h1>Lista de Alumnos</h1>
+    </br>
+    <%= form_tag edit_multiple_alumnos_path, method: :get do %>
+        <table id="example" class="display" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+          	    <th></th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Grado</th>
+                <th>Activo</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+          	    <th></th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Grado</th>
+                <th>Activo</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <% @users.each do |user| %> 
+                <tr>
+                    <th><%= check_box_tag "users_ids[]", user.id  %></th>
+                    <th><%= user.name %></th>
+                    <th><%= user.email %></th>
+                    <th><%= user.grado %></th>
+                    <th>
+                    <% if user.activo === "1" %>
+                        <%= image_tag("checkmark.png", {border: 0, width: 25, height: 25}) %>
+                    <% else %>
+                        <%= image_tag("cancel.png", {border: 0, width: 25, height: 25}) %>
+                    <% end %>
+                    </th>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= submit_tag "Editar Selección", :class => 'btn btn-primary' %>
+        </br>
+        </br>
+    <% end %>
+    <% if current_user && current_user.administrador? %> 
+    <% else %>
+    <h1>No tiene acceso a esta pagina</h1>
+    </br>
+<% end %>

@@ -1,0 +1,41 @@
+YA!!! 1. poder mostrar sheets de google + (con un iframe)
+(si se puede y ya funciona, falta agregar de la base de datos que los guarde)
+YA!!! 2. los sheets ponerlos en una "horarios" (tab nueva)
+5. agregar columnas para saber que estan subiendo de nota (actividad 10% etc...)
+YA
+
+6. 2 decimales 
+YA
+
+3. agregar los horarios a cursos (alli podremos filtrar por profesor)
+(agregar una tab para ver los horarios segun profesor)
+una tab parecida a la de aulas donde se filtren solo la informacion 
+propia de cada profesor
+o solo agregala en cursos!!!
+(hay que reiniciar el servidor) 
+YA!!!!!
+
+
+7. notas acumulado (mis notas)
+(holy shit)
+create una property mas que a la hora de crearla le ponga 0
+al subir notas vas a calcular de cada una de las notas (por todos los periodos)
+lo que lleva ganado ahorita
+
+8. generacion de boletas de notas
+YA!
+
+9. Reportes
+---------------------------------------------------------
+
+X. promedio para pasar 
+3er ciclo 6
+bach 7
+
+agregar listado de alumnos en Cursos! (cursos inscritos)
+
+Marcos Daniel Arévalo Tejada (se deberia crear periodo extra)
+
+pdf del listado de notas con los alumnos por periodo 
+
+agregar periodo de recuperacion

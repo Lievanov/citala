@@ -1,0 +1,54 @@
+<h1>Listado de Inscripciones </h1>
+</br>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>Curso</th>
+        <th>Alumno</th>
+        <th>Periodo</th>
+        <th>Eval1</th>
+        <th>Eval2</th>
+        <th>Eval3</th>
+        <th>Eval4</th>
+        <th>Eval5</th>
+        <th>Eval6</th>
+        <th>Eval7</th>
+        <th>Eval8</th>
+        <th>Eval9</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+        <th>Curso</th>
+        <th>Alumno</th>
+        <th>Periodo</th>
+        <th>Eval1</th>
+        <th>Eval2</th>
+        <th>Eval3</th>
+        <th>Eval4</th>
+        <th>Eval5</th>
+        <th>Eval6</th>
+        <th>Eval7</th>
+        <th>Eval8</th>
+        <th>Eval9</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @inscripciones.each do |inscripcion| %> 
+	    <tr>
+            <th><%= Curso.find(inscripcion.cursoID).cursoID %></th>
+            <th><%= User.find(inscripcion.alumnoID).name %></th>
+            <th><%= inscripcion.periodo %></th>
+            <th><%= inscripcion.eval1 * 1.0 %></th>
+            <th><%= inscripcion.eval2 * 1.0 %></th>
+            <th><%= inscripcion.eval3 * 1.0 %></th>
+            <th><%= inscripcion.eval4 * 1.0 %></th>
+            <th><%= inscripcion.eval5 * 1.0 %></th>
+            <th><%= inscripcion.eval6 * 1.0 %></th>
+            <th><%= inscripcion.eval7 * 1.0 %></th>
+            <th><%= inscripcion.eval8 * 1.0 %></th>
+            <th><%= inscripcion.eval9 * 1.0 %></th>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<h1>Editar asignatura</h1>
+</br>
+<div class="well">
+<%= form_for :asignatura do |f| %>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :asignaturaID, 'Código de Asignatura'  %><br>
+    <%= f.text_field :asignaturaID, :class => 'form-control' %>
+  </p>
+</div>
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :nombre, 'Nombre de Asignatura' %><br>
+    <%= f.text_field :nombre, :class => 'form-control' %>
+  </p>
+</div>
+  <p>
+</div>
+<%= f.submit 'Editar', :class => 'btn btn-primary' %>
+  </p>
+<% end %>
+</br></br>

@@ -1,0 +1,55 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<h1>Listado de Cursos</h1>
+
+<%= link_to "Crear Curso", create_curso_path(), class: "btn btn-primary" %>
+</br>
+</br>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>ID curso</th>
+        <th>Aula</th>
+        <th>Profesor</th>
+        <th>Asignatura</th>
+        <th>Horario</th>
+        <th>Editar</th>
+        <th>Definir Alumnos</th>
+        <th>Notas</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+        <th>ID curso</th>
+        <th>Aula</th>
+        <th>Profesor</th>
+        <th>Asignatura</th>
+        <th>Horario</th>
+        <th>Editar</th>
+        <th>Definir Alumnos</th>
+        <th>Notas</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @cursos.each do |curso| %> 
+      <tr>
+        <th><%= curso.cursoID %></th>
+        <th><%= Aula.find(curso.aulaID).aulaID %></th>
+        <th><%= User.find(curso.profesorID).name %></th>
+        <th><%= Asignatura.find(curso.asignaturaID).nombre %></th>
+        <th><%= Curso.find(curso.profesorID).horario %></th>
+        <th><%= link_to "Editar", edit_curso_path(curso), class: "btn btn-success" %></th>
+        <th><%= link_to "Inscribir", inscripcion_new_path(curso), class: "btn btn-warning" %></th>
+        <th><%= link_to "Notas", update_curso_notas_path(curso.id), class: "btn btn-primary" %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

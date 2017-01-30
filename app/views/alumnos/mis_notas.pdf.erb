@@ -1,0 +1,65 @@
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    font-size: 8px;
+}
+</style>
+<h1>Mis notas</h1>
+</br>
+<table class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>Materia</th>
+        <th>Periodo</th>
+        <th>Actividades(35%)</th>
+        <th>Int(35%)</th>
+        <th>Examen Periodo (30%)</th>
+        <th></th>
+        <th>Nota Periodo</th>
+        <th>Nota Acumulado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notas.each do |inscripcion| %> 
+	    <tr>
+            <% if inscripcion.periodo == 1 %>
+              <th rowspan="4"> <%= Asignatura.find(Curso.find(inscripcion.cursoID).asignaturaID).nombre %> </th>
+            <% end %>
+            <th><%= inscripcion.periodo %></th>
+            <th><%= ((inscripcion.eval1 * 0.1 ) + (inscripcion.eval2 * 0.30) + (inscripcion.eval3 * 0.30) + (inscripcion.eval4 * 0.30)).round(2) %></th>
+            <th><%= ((inscripcion.eval5 * 0.1) + (inscripcion.eval6 * 0.30) + (inscripcion.eval7 * 0.30) + (inscripcion.eval8 * 0.30)).round(2) %></th>
+            <th><%= inscripcion.eval9 %></th>
+            <th></th>
+            <th><%= ((inscripcion.eval1 * 0.05) + (inscripcion.eval2 * 0.1) + (inscripcion.eval3 * 0.1) + (inscripcion.eval4 * 0.10) + (inscripcion.eval5 * 0.05) + (inscripcion.eval6 * 0.1) + (inscripcion.eval7 * 0.1) + (inscripcion.eval8 * 0.1) + (inscripcion.eval9 * 0.3)).round(2) %></th>
+            <% if inscripcion.periodo == 1 %>
+              <th rowspan="4"> <%= calcular_acumulado(inscripcion.alumnoID, inscripcion.cursoID).round(2) %> </th>
+            <% end %>
+        </tr>
+        <% if inscripcion.periodo == 4 %>
+        <tr><th colspan="8"></th></tr>
+        <% end %>
+    <% end %>
+    <% if @recuperacion != nil %>
+      <tr><th colspan="8" style="text-align:center;">Periodo de recuperacion</th></tr>
+      <% @recuperacion.each do |inscripcion| %> 
+  	    <tr>
+              <th> <%= Asignatura.find(Curso.find(inscripcion.cursoID).asignaturaID).nombre %> </th>
+              <th><%= inscripcion.periodo %></th>
+              <th><%= ((inscripcion.eval1 * 0.1 ) + (inscripcion.eval2 * 0.30) + (inscripcion.eval3 * 0.30) + (inscripcion.eval4 * 0.30)).round(2) %></th>
+              <th><%= ((inscripcion.eval5 * 0.1) + (inscripcion.eval6 * 0.30) + (inscripcion.eval7 * 0.30) + (inscripcion.eval8 * 0.30)).round(2) %></th>
+              <th><%= inscripcion.eval9 %></th>
+              <th></th>
+              <th><%= ((inscripcion.eval1 * 0.05) + (inscripcion.eval2 * 0.1) + (inscripcion.eval3 * 0.1) + (inscripcion.eval4 * 0.10) + (inscripcion.eval5 * 0.05) + (inscripcion.eval6 * 0.1) + (inscripcion.eval7 * 0.1) + (inscripcion.eval8 * 0.1) + (inscripcion.eval9 * 0.3)).round(2) %></th>
+              <th> <%= ((inscripcion.eval1 * 0.05) + (inscripcion.eval2 * 0.1) + (inscripcion.eval3 * 0.1) + 
+                      (inscripcion.eval4 * 0.1) + (inscripcion.eval5 * 0.05) + (inscripcion.eval6 * 0.1) + 
+                      (inscripcion.eval7 * 0.1) + (inscripcion.eval8 * 0.1) + (inscripcion.eval9 * 0.3)).round(2) %> </th>
+          </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</br></br></br>

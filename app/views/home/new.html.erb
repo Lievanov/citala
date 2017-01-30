@@ -1,0 +1,61 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<div class="well">
+    <h1>Crear noticia nueva</h1>
+    <%= form_for :post, html: { multipart: true } do |f| %>
+    <div>
+        <p><%= f.label :titulo %></p>
+        <p><%= f.text_field :titulo, :class => 'form-control' %></p>
+    </div>
+    <div>
+        <p><%= f.label :contenido %></p>
+        <p><%= f.text_area :contenido, :class => 'form-control' %></p>
+    </div>
+    <div>
+        <p><%= f.label :foto %></p>
+        <p><%= f.file_field :foto %></p>
+    </div>
+    <div>
+        <%= f.submit "Guardar", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</div>
+
+<h1>Listado de noticias</h1>
+</br>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>Titulo</th>
+        <th>contenido</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+        <th>Titulo</th>
+        <th>Contenido</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @posts.each do |noticia| %> 
+        <tr>
+            <th><%= noticia.titulo %></th>
+            <th><%= noticia.contenido %></th>
+            <th><%= link_to "Editar", edit_post_path(noticia), class: "btn btn-success" %></th>
+            <th><%= button_to "Eliminar",  destroy_post_path(noticia), method: :delete, class: "btn btn-danger", confirm: "Esta seguro de eliminar la noticia: #{noticia.titulo}?" %></th>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

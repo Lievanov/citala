@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colegio Citalá</title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div>
+    <div id="page-wrap">
+      <div class="container-fluid">
+        <div class="navbar-form navbar-left">
+          <%= link_to image_tag("boton_principal.png", border: 0), "/" %>
+        </div>
+        <div class="navbar-form navbar-right">
+          <% if current_user %>
+            <h4>Bienvenido <strong><%= current_user.name %></strong>!</h4>
+            <%= link_to "Desconectarse", signout_path, id: "sign_out" %>
+          <% else %>
+            <h4><%= link_to("Acceso Institucional", "https://citala-lievanov.c9users.io/auth/google_oauth2") %></h4>
+          <% end %>
+        </div>
+      </div>
+      </br>
+      <ul class="nav nav-tabs nav-justified">
+        
+          <li><%= link_to "Asignaturas", asignatura_path() %></li>
+          <li><%= link_to "Alumnos", alumno_path() %></li>
+          <li><%= link_to "Profesores", profesor_path() %></li>
+          <li><%= link_to "Usuarios", aceptar_usuarios_path() %></li>
+          <li><%= link_to "Aulas", aulas_path() %></li>
+          <li><%= link_to "Cursos", cursos_path() %></li>
+          <li><%= link_to "Inscripciones", inscripcion_path() %></li>
+          <li><%= link_to "Noticias", new_post_path() %></li>
+          <li><%= link_to "Mis Alumnos", mis_alumnos_path() %></li>
+          <li><%= link_to "Subir notas", update_grades_path() %></li>
+          <li><%= link_to "Mis notas", show_grades_alumnos_path() %></li>
+          <li><%= link_to "Configuracion", configuracion_path() %></li>
+      </ul>
+      <div>
+      </br>
+      <%= yield %>
+      </div>
+    </div>
+    <div style="background-color:#282828;color:#ADAFB2;">
+        <center>
+          <p>Colegio Citalá</p>
+          <p>Colegio Lamatepec. A 600 metros sobre la calle que de la Carretera al Puerto de La Libertad conduce al Cantón Las Granadillas. </p>
+          <p>Desvío hacia Comasagua. Santa Tecla. la Libertad. Tel. (503) 2534 8928</p>
+          <p>www.citala.edu.sv</p>
+          <p>informacion@citala.edu.sv</p>
+        </center>
+      </div>
+  </div>
+  </body>
+</html>

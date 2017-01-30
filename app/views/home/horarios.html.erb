@@ -1,0 +1,49 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<h1>Calendario Citalá</h1>
+<% if current_user && current_user.administrador? %> 
+    <div class="well vs-component">
+        <h1>Modificar horarios</h1>
+        
+        </br>
+        <table id="example" class="display" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>URL</th>
+                <th>Editar</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+                <th>Titulo</th>
+                <th>URL</th>
+                <th>Editar</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <% @horas.each do |hora| %> 
+                <tr>
+                    <th><%= hora.titulo %></th>
+                    <th><%= hora.url %></th>
+                    <th><%= link_to "Editar", edit_hora_path(hora), class: "btn btn-success" %></th>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+        </br>
+    </div>
+<% end %>
+<% @horas.each do |hora| %> 
+    <h1><%= hora.titulo %></h1>
+    <iframe width="1050" height="700" frameborder="0" src=" <%= hora.url %> "></iframe>
+<% end %>

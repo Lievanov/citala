@@ -1,0 +1,195 @@
+mysql-ctl start
+
+----------------------------
+Codigo de rails
+
+rails generate model Usuario
+rails generate model Aula
+rails generate model Asignatura
+rails generate model AlumnoAsignaturaAula
+rails generate model AulaAlumno
+
+alumno_asignatura_aula.rb
+belongs_to :usuario
+    
+belongs_to :asignatura
+    
+belongs_to :aula
+
+asignatura.rb
+has_many :alumno_asignatura_aulas
+
+aula.rb
+has_many :alumno_asignatura_aulas
+    
+has_many :aula_alumnos
+    
+belongs_to :usuario
+
+aula_alumno.rb
+belongs_to :aula
+    
+belongs_to :usuario
+
+usuario.rb
+has_many :aulas
+has_many :alumno_asignatura_aulas
+has_many :aula_alumnos
+
+---Generar controlador para vistas de asignatuas---
+rails generate model Usuario
+rails generate model Aula
+rails generate model Asignatura
+rails generate model AlumnoAsignaturaAula
+rails generate model AulaAlumno
+
+alumno_asignatura_aula.rb
+belongs_to :usuario
+    
+belongs_to :asignatura
+    
+belongs_to :aula
+
+asignatura.rb
+has_many :alumno_asignatura_aulas
+
+aula.rb
+has_many :alumno_asignatura_aulas
+    
+has_many :aula_alumnos
+    
+belongs_to :usuario
+
+aula_alumno.rb
+belongs_to :aula
+    
+belongs_to :usuario
+
+usuario.rb
+has_many :aulas
+has_many :alumno_asignatura_aulas
+has_many :aula_alumnos
+
+db/migrate/usuarios.rb
+t.string :correo
+      
+t.string :carnet
+      
+t.string :rol
+      
+t.string :nombre
+      
+t.string :apellido
+      
+t.string :profesorID
+      
+t.boolean :activo
+      
+t.boolean :septimo
+      
+t.boolean :octavo
+      
+t.boolean :noveno
+      
+t.boolean :decimo
+      
+t.boolean :onceavo
+
+db/migrate/aulas.rb
+t.string :aulaID
+t.references :profesorID
+t.boolean :actual
+
+db/migrate/asignaturas.rb
+t.string :asignaturaID
+t.string :nombre
+
+db/migrate/alumno_asignatura_aulas.rb
+t.references :carnetAlumno
+t.references :codigoAsignatura
+      
+t.references :codigoAula
+      
+t.references :carnetMaestro
+      
+t.text :periodo
+      
+t.decimal :eval1
+      
+t.decimal :eval2
+      
+t.decimal :eval3
+      
+t.decimal :eval4
+      
+t.decimal :eval5
+      
+t.decimal :eval6
+      
+t.decimal :eval7
+      
+t.decimal :eval8
+      
+t.decimal :eval9
+
+db/migrate/aula_alumnos.rb
+t.references :codigoAula
+      
+t.references :carnetAlumno
+      
+t.boolean :actual
+
+rails g controller asignaturas
+
+-----------------------hacer nueva tabla-------------
+usuario con los cambios de inscripcion y curso
+
+usuario
+--------
+correo
+carnet
+rol
+nombre
+apellido
+activo
+profesorID
+septimo
+octavo
+noveno
+decimo
+onceavo
+
+Curso
+--------
+asignaturaID
+profesorID
+aulaID
+horario *tent
+
+inscripcion
+-----------
+cursoID
+alumnoID
+periodo
+activo
+eval1
+eval2
+...
+
+Aula
+--------
+aulaID
+profesorID
+actual
+
+Asignatura
+----------
+asignaturaID
+nombre
+
+----
+http://fernando-gaitan.com.ar/ruby-on-rails-parte-18-javascript-y-coffeescript/
+
+https://www.datatables.net/examples/basic_init/zero_configuration.html
+
+http://bootsnipp.com/snippets/featured/panel-table-with-filters-per-column

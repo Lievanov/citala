@@ -1,0 +1,278 @@
+Inscripcion.where(periodo: 5).destroy_all
+
+http://www.npr.org/podcasts/510313/how-i-built-this
+http://stackoverflow.com/questions/14877797/how-to-sum-two-fields-within-an-sql-query
+
+<div><%= link_to "Descargar", info_alumno_path(@alumno.id, format: :pdf), class: "btn btn-info" %></div>
+mysql-ctl start
+rails g wicked_pdf
+<h4><%= link_to "Acceso Institucional", "/auth/google_oauth2", id: "sign_in" %></h4>
+<li><%= link_to "Asignaturas", asignatura_path() %></li>
+
+467263913176-6sdjrcd1vcm6nqo2sne4v1bjlkahurlr.apps.googleusercontent.com
+sj3gezkF_Lrs46tSGRTRQJsy
+
+rails generate model User
+rails generate model Aula
+rails generate model Asignatura
+rails generate model Curso
+rails generate model Inscripcion
+rails generate model post
+rails generate model hora
+
+//subir una imagen a post
+https://richonrails.com/articles/allowing-file-uploads-with-carrierwave
+# Reporteria
+http://www.thinreports.org/
+https://github.com/sandrods/odf-report
+
+user.rb
+has_many :cursos
+has_many :inscripcions
+has_many :aulas
+
+Aula.rb
+belongs_to :user
+has_many :cursos
+
+asignatura.rb
+has_many :cursos
+
+curso.rb
+has_many :inscripcions
+belongs_to :asignatura
+belongs_to :user
+belongs_to :aula
+
+
+inscripcion.rb
+belongs_to :user
+belongs_to :curso
+
+db/migrate/usuarios.rb
+t.string :correo
+t.string :carnet
+t.string :rol
+t.string :nombre
+t.string :apellido
+t.string :profesorID
+t.boolean :activo
+t.boolean :septimo
+t.boolean :octavo
+t.boolean :noveno
+t.boolean :decimo
+t.boolean :onceavo
+
+db/migrate/aulas.rb
+t.string :aulaID
+t.references :profesorID
+t.boolean :actual
+
+db/migrate/asignaturas.rb
+t.string :asignaturaID
+t.string :nombre
+
+db/migrate/cursos.rb
+t.string :cursoID
+t.references :asignaturaID
+t.references :profesorID
+t.references :aulaID
+t.boolean :activo
+
+db/migrate/inscripcions.rb
+t.references :cursoID
+t.references :alumnoID
+t.integer :periodo
+t.decimal :eval1
+t.decimal :eval2
+t.decimal :eval3
+t.decimal :eval4
+t.decimal :eval5
+t.decimal :eval6
+t.decimal :eval7
+t.decimal :eval8
+t.decimal :eval9
+
+rails generate controller asignaturas
+rails generate controller alumnos
+rails generate controller users
+rails generate controller aulas
+rails generate controller cursos
+
+
+u = User.find(1)
+u.update_attribute :rol, 'Alumno'
+u.update_attribute :activo, TRUE
+
+u = User.find(2)
+u.update_attribute :rol, 'Profesor'
+u.update_attribute :activo, TRUE
+
+<%= select("name", "user_id", User.where(rol: 'Profesor').collect {|u| [ u.name, u.id ] }, {include_blank: 'Elegir'}) %>
+f.collection_select :profesorID_id, User.rol("Profesor"),:id,:name, include_blank: true 
+
+Codigo extra de prueba
+<th>
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Elegir
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<li><a href="#">Alumno</a></li>
+<li><a href="#">Profesor</a></li>
+<li><a href="#">Administrador</a></li>
+</ul>
+</div>
+</th>
+
+Codigo de tomar dropdown persona
+<div class="row">
+  <p class="col-md-4">
+    <%= f.label :profesorID, 'Profesor asignado'  %><br>
+    <%= collection_select(:profesorID, :name, User.where(rol: 'Profesor'), :id, :name, {include_blank: 'Elegir'}, :class => 'dropdown') %>
+  </p>
+</div>
+
+========== codigo anterior de aulumnos_controller
+def edit
+        @user = User.find(params[:id])
+        @Users = User.where(rol: 'Profesor')
+    end
+    def update
+        @users = User.find(params[:id])
+        if @users.update(alumno_params)
+            flash[:success] = "Alumno editado exitosamente!"
+            redirect_to '/alumnos'
+        else
+            flash[:error] = "Hubo un error al editar el Alumno."
+            redirect_to '/alumnos'
+        end
+    end
+
+------ como deberia de quedar
+def edit
+        begin
+            @users = User.find(params[:users_ids])
+        rescue
+            flash[:error] = "Debe seleccionar al menos un usuario para editar!"
+            redirect_to '/AceptarUsuarios'
+        end
+    end
+    def update
+        User.update(params[:users].keys, params[:users].values)
+        flash[:success] = "Usuarios editados exitosamente!"
+        redirect_to '/AceptarUsuarios'
+    end
+    
+    
+<%= link_to "Inscripciones", inscripcion_path(), class: "btn btn-primary" %>
+
+----- pra ver lo de las notas
+
+
+                <th><%= inscripcion.eval1 %></th>
+                <th><%= inscripcion.eval2 %></th>
+                <th><%= inscripcion.eval3 %></th>
+                <th><%= inscripcion.eval4 %></th>
+                <th><%= inscripcion.eval5 %></th>
+                <th><%= inscripcion.eval6 %></th>
+                <th><%= inscripcion.eval7 %></th>
+                <th><%= inscripcion.eval8 %></th>
+                <th><%= inscripcion.eval9 %></th>
+                
+https://startbootstrap.com/template-overviews/business-casual/
+
+class="table table-striped table-bordered" cellspacing="0" width="100%"
+https://www.datatables.net/examples/basic_init/zero_configuration.html
+
+
+
+----------codigo de la tabla
+
+<div id="example_wrapper" class="dataTable_wrapper">
+  <div class="dataTables_length" id="example_length">
+    <label>
+      Mostrar
+      <select name="example_length" aria-contrls="example" class>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+       Asignaturas
+    </label>
+  </div>
+  <div id="example_filter" class="dataTables_filter">
+    <label>Search:<input type="text" id="search" placeholder="" aria-controls="example"></label>
+  </div>
+    <table id="example" class="display" cellspacing="0" width="100%">
+  	  <tread>
+        <tr>
+          <th>Código de materia</th>
+          <th>Nombre de materia</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </tread>
+      <tbody>
+        <% @asignaturas.each do |asignatura| %> 
+    	    <tr>
+            <th><%= asignatura.asignaturaID %></th>
+            <th><%= asignatura.nombre %></th>
+            <th><%= link_to "Editar", edit_asignatura_path(asignatura) %></th>
+            <th><%= link_to "Eliminar", destroy_asignatura_path(asignatura), method: :delete, data: { confirm: 'Esta seguro de eliminar la asignatura?' }  %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+/////
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+/////////////////////////////////////////scripts para funcionamiento de tabla
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.12.3.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+
+
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Código de materia</th>
+      <th>Nombre de materia</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Código de materia</th>
+      <th>Nombre de materia</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @asignaturas.each do |asignatura| %> 
+      <tr>
+        <th><%= asignatura.asignaturaID %></th>
+        <th><%= asignatura.nombre %></th>
+        <th><%= link_to "Editar", edit_asignatura_path(asignatura) %></th>
+        <th><%= link_to "Eliminar", destroy_asignatura_path(asignatura), method: :delete, data: { confirm: 'Esta seguro de eliminar la asignatura?' }  %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+-----------------------------
+Codigo de foto alumno
+<img src=" <%= user.foto %> " style="max-height:100px;max-width:100px;" width="auto" height="auto" >
+            <div> 
+              <p><%= f.label :foto %></p>
+              <p><%= f.file_field :foto %></p>
+            </div>

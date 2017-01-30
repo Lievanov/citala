@@ -1,0 +1,104 @@
+<h1>Información de Alumno</h1>
+    </br>
+    <div><%= link_to "Descargar", info_alumno_path(@alumno.id, format: :pdf), class: "btn btn-info" %></div>
+    </br>
+    
+    <div class="well">
+          <div class="row">
+            <div class="col-md-5"> <h4>Nombre completo: <%= @alumno.name %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <h4>Correo Electronico: <%= @alumno.email %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Carnet: <%= @alumno.carnet %></h4> </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Profesor Encargado: <%= User.find(@alumno.profesorID).name %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <h4>Estudiante activo: <%= @alumno.activo %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4> Grado: <%= @alumno.grado %>°</h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4> Fecha de nacimiento: <%= @alumno.fecha_nac %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <h4> Centro Escolar Anterior: <%= @alumno.Centro_esc_ant %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4> Religion: <%= @alumno.religion %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Telefono de casa: <%= @alumno.tel_casa %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <h4>Enfermedades que padece: <%= @alumno.enfermedades %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"> <h4>Departamento: <%= @alumno.departamento %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"> <h4>Municipio: <%= @alumno.municipio %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Barrio: <%= @alumno.barrio %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Colonia: <%= @alumno.colonia %></h4></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"> <h4>Nombre del padre: <%= @alumno.nombre_padre %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Telefono padre: <%= @alumno.tel_padre %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Correo padre: <%= @alumno.correo_padre %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Ocupacion padre: <%= @alumno.ocupacion_padre %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Lugar de trabajo padre: <%= @alumno.lugar_trabajo_padre %></h4></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"><h4>Nombre madre: <%= @alumno.nombre_madre %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Telefono madre: <%= @alumno.tel_madre %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Correo madre: <%= @alumno.correo_madre %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Ocupacion madre: <%= @alumno.ocupacion_madre %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Lugar de trabajo madre: <%= @alumno.lugar_trabajo_madre %></h4></div>
+            <div class="col-md-1"></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"><h4>Nombre encargado: <%= @alumno.nombre_enc %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Correo encargado: <%= @alumno.correo_enc %></h4></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-5"><h4>Telefono encargado: <%= @alumno.tel_enc %></h4></div>
+            <div class="col-md-1"></div>
+          </div>
+          </br></br>
+          <div class="row">
+            <div class="col-md-5"><h4>En caso de emergencia: <%= @alumno.en_caso_emergencia %></h4></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5"><h4>Telefono de emergencia: <%= @alumno.tel_emergencia %></h4></div>
+          </div>
+          </br>
+        </div>
+</div>

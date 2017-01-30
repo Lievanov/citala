@@ -1,0 +1,38 @@
+<h1>Listado de mis alumnos</h1>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Grado</th>
+        <th>Activo</th>
+        <th>Información</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Grado</th>
+        <th>Activo</th>
+        <th>Información</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @mis_alumnos.each do |user| %> 
+        <tr>
+            <th><%= user.name %></th>
+            <th><%= user.email %></th>
+            <th><%= user.grado %></th>
+            <th>
+            <% if user.activo === "1" %>
+                <%= image_tag("checkmark.png", {border: 0, width: 25, height: 25}) %>
+            <% else %>
+                <%= image_tag("cancel.png", {border: 0, width: 25, height: 25}) %>
+            <% end %>
+            </th>
+            <th><%= link_to "Información", info_alumno_path(user), class: "btn btn-info" %></th>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

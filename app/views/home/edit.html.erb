@@ -1,0 +1,20 @@
+<div class="well">
+    <h1>Editar noticia</h1>
+    <%= form_for :post, html: { multipart: true } do |f| %>
+    <div>
+        <p><%= f.label :titulo %></p>
+        <p><%= f.text_field :titulo, :class => 'form-control' %></p>
+    </div>
+    <div>
+        <p><%= f.label :contenido %></p>
+        <p><%= f.text_area :contenido, :class => 'form-control' %></p>
+    </div>
+    <div>
+        <p><%= f.label :foto %></p>
+        <p><%= f.file_field :foto %></p>
+    </div>
+    <div>
+        <%= f.submit "Guardar", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</div>

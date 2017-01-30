@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notas de alumnos</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+    <body>
+        <h2>Notas de alumnos del curso <%= Curso.find(params[:id]).cursoID %></h2>
+        <%= form_tag update_multiple_notas_path, method: :put do %>
+  <table style="width:100%">
+  	<tread>
+	  <tr>
+        <th>Alumno</th>
+        <th>Periodo</th>
+        <th>Eval1</th>
+        <th>Eval2</th>
+        <th>Eval3</th>
+        <th>Eval4</th>
+        <th>Eval5</th>
+        <th>Eval6</th>
+        <th>Eval7</th>
+        <th>Eval8</th>
+        <th>Eval9</th>
+      </tr>
+  	</tread>
+    <tbody>
+    	<% @notas.each do |nota| %>
+        <%= fields_for "notas[]", nota do |f| %>
+          <tr>
+            <th><%= User.find(nota.alumnoID).name %></th>
+            <th><%= nota.periodo %></th>
+            <th><%= nota.eval1 * 1.0 %></th>
+            <th><%= nota.eval2 * 1.0 %></th>
+            <th><%= nota.eval3 * 1.0 %></th>
+            <th><%= nota.eval4 * 1.0 %></th>
+            <th><%= nota.eval5 * 1.0 %></th>
+            <th><%= nota.eval6 * 1.0 %></th>
+            <th><%= nota.eval7 * 1.0 %></th>
+            <th><%= nota.eval8 * 1.0 %></th>
+            <th><%= nota.eval9 * 1.0 %></th>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+</br></br></br>
+    </body>
+</html>

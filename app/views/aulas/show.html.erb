@@ -1,0 +1,55 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<h1>Listado de Aulas</h1>
+
+<%= link_to "Crear Aula", create_aula_path(), class: "btn btn-primary" %>
+</br>
+</br>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID Aula</th>
+      <th>Profesor Responsable</th>
+      <th>Grado</th>
+      <th>Actual</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>ID Aula</th>
+      <th>Profesor Responsable</th>
+      <th>Grado</th>
+      <th>Actual</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @aulas.each do |aula| %> 
+      <tr>
+        <th><%= aula.aulaID %></th>
+        <th><%= User.find(aula.profesorID).name %></th>
+        <th><%= aula.grado %></th>
+        <th>
+        <% if aula.actual === true %>
+            <%= image_tag("checkmark.png", {border: 0, width: 25, height: 25}) %>
+        <% else %>
+            <%= image_tag("cancel.png", {border: 0, width: 25, height: 25}) %>
+        <% end %>
+        </th>
+        <th><%= link_to "Editar", edit_aula_path(aula), class: "btn btn-success" %></th>
+        <th><%= button_to "Eliminar", destroy_aula_path(aula), method: :delete, class: "btn btn-danger"  %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

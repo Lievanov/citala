@@ -1,0 +1,55 @@
+<h1>Subir Notas modo administrador</h1>
+</br>
+<%= form_tag update_multiple_notas_path, method: :put do %>
+  <table class="table">
+    <tread>
+      <th></th>
+      <th>|</th>
+      <th></th>
+      <th>Actividades(35%)</th>
+      <th></th>
+      <th>|</th>
+      <th></th>
+      <th>Integracion(35%)</th>
+      <th></th>
+      <th>|Examen(30%)</th>
+    </tread>
+  	<tread>
+	    <tr>
+        <th>Alumno</th>
+        <th>Actividad (5%)</th>
+        <th>Evaluacion (10%)</th>
+        <th>Evaluacion (10%)</th>
+        <th>Evaluacion (10%)</th>
+        <th>Evaluacion (5%)</th>
+        <th>Evaluacion (10%)</th>
+        <th>Evaluacion (10%)</th>
+        <th>Evaluacion (10%)</th>
+        <th>Examen (30%)</th>
+      </tr>
+  	</tread>
+    <tbody>
+    	<% @notas.each do |nota| %>
+        <%= fields_for "notas[]", nota do |f| %>
+          <tr>
+            <th><%= User.find(nota.alumnoID).name %></th>
+            <th><%= f.number_field :eval1, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval2, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval3, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval4, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval5, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval6, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval7, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval8, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+            <th><%= f.number_field :eval9, :step => 0.01, :min => 0.00, :max => 10.0, :class => 'form-control' %></th>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+    <div class="actions">
+        <%= submit_tag 'Subir notas', :class => 'btn btn-primary' %>
+    </div>
+    
+<% end %>
+</br></br></br>

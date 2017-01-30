@@ -1,0 +1,36 @@
+<% if flash[:success] %>
+    <div class="alert alert-success">
+        <%= flash[:success] %>
+    </div>
+<% end %>
+<% if flash[:error] %>
+    <div class="alert alert-danger">
+        <%= flash[:error] %>
+    </div>
+<% end %>
+<h1>Lista de Profesores</h1>
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Editar</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Editar</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @users.each do |user| %> 
+        <tr>
+            <th><%= user.name %></th>
+            <th><%= user.email %></th>
+            <th><%= link_to "Editar", edit_profesor_path(user), :class => 'btn btn-primary' %></th>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

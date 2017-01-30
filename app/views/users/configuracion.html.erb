@@ -1,0 +1,56 @@
+<% if flash[:success] %>
+    <div class="alert alert-success">
+        <%= flash[:success] %>
+    </div>
+<% end %>
+<% if flash[:error] %>
+    <div class="alert alert-danger">
+        <%= flash[:error] %>
+    </div>
+<% end %>
+<h3>Configuracion</h3>
+<h4>Configuracion de alumnos y cambio de grado</h4>
+<div class="well">    
+    <div class="row">
+        <div class="col-md-4">
+            <%= button_to 'Crear Periodo de Recuperacion', inscripcion_periodo_recuperacion_path, method: :post, :class => 'btn btn-danger' %>
+        </div>
+        <div class="col-md-8">
+            <h4><strong>Se crearan todos los periodos de recuperacion, de manera que ahora todos los alumnos de tercer ciclo que no hayan logrando
+            un 6 en la materia, se les creara un periodo de recuperacion a la materia que no aprobaron. </b> 
+            Para los alumnos de bachilerato, la nota minima es 7, en caso no tengan 7 de nota en una materia en especifico se abre el 
+            periodo de recuperacion en dicha materia. </b>Este proceso puede repetirse mas de una vez. </strong></h4>
+        </div>
+    </div>
+</div>
+</br>
+<div class="well">    
+    <div class="row">
+         <div class="col-md-4">
+                <%= button_to 'Promover Alumnos', inscripcion_promover_alumnos_path, method: :post, :class => 'btn btn-danger' %>
+            </div>
+            <div class="col-md-8">
+                <h4><strong>Este boton ayuda a que todos los alumnos que hayan pasado todas sus materias (con 6 o mas para tercer ciclo y 
+                7 para bachillerato), de manera automatica, el alumno pasara al siguiente grado. Para el caso de los alumnos que se graduan
+                su estado pasa a ser desactivado, las notas del alumno graduado queda en el sistema. </br> 
+                Esta funcion se debe correr una sola vez. Se hace la observacion que este proceso se debe correr justo antes de comenzar el 
+                siguiente año escolar.</strong></h4>
+            </div>
+        </div>
+    </div>
+</div>
+</br>
+<div class="well">    
+    <div class="row">
+            <div class="col-md-4">
+               <%= button_to 'Cerrar año escolar', inscripcion_cerrar_anio_path, method: :post, :class => 'btn btn-danger' %>
+            </div>
+            <div class="col-md-8">
+                <h4><strong>ATENCION: El siguiente boton desactiva todas las funcionalidades del año actual, para poder limpiar y 
+                comenzar de nuevo el siguiente año escolar. Se debe correr una sola vez justo antes de iniciar el siguiente año escolar.
+                </strong></h4>
+            </div>
+        </div>
+    </div>
+</div>
+</br></br></br></br>
