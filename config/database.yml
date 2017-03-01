@@ -12,7 +12,7 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  host: <%=ENV['IP']%>
+  host: localhost
   pool: 5
   #username: <%=ENV['C9_USER']%>
   username: 'root'
