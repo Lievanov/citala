@@ -1,8 +1,17 @@
-Creado por Diego Lievano 2016
+# Grade system for Citala
 
-Req.
-Ubuntu version 14.04.3 LTS
-IDE en linea “cloud 9” https://c9.io/
-Base de datos MySQL version 5.5.49 
-Ruby version 2.3.0p0
-Rails version 4.2.5
+Citala grade system for University purposes. *out of maintenance*
+
+# Stack 
+
+  - Ruby on Rails 4.2
+  - MySQL
+
+In this project:
+  - You can create classrooms
+  - Manage students
+  - Add and modify classes 
+  - create grades with different percentages
+  - As a student, consult your grades online
+  - using gmail accounts
+
